@@ -1,0 +1,1 @@
+module.exports = require("npm:todomvc-common@1.0.0/base");

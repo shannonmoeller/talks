@@ -1,0 +1,67 @@
+{
+  "name": "todomvc-common",
+  "version": "1.0.0",
+  "description": "Common TodoMVC utilities used by our apps",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tastejs/todomvc-common"
+  },
+  "author": {
+    "name": "TasteJS"
+  },
+  "main": "base.js",
+  "files": [
+    "base.js",
+    "base.css"
+  ],
+  "keywords": [
+    "todomvc",
+    "tastejs",
+    "util",
+    "utilities"
+  ],
+  "gitHead": "585a3f3f7e40a0b48f721abda03ec558f2ecb3b6",
+  "bugs": {
+    "url": "https://github.com/tastejs/todomvc-common/issues"
+  },
+  "homepage": "https://github.com/tastejs/todomvc-common",
+  "_id": "todomvc-common@1.0.0",
+  "scripts": {},
+  "_shasum": "faa61d1f250d0ea5e636437fbef812cff37b670f",
+  "_from": ".",
+  "_npmVersion": "1.4.28",
+  "_npmUser": {
+    "name": "sindresorhus",
+    "email": "sindresorhus@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sindresorhus",
+      "email": "sindresorhus@gmail.com"
+    },
+    {
+      "name": "addyosmani",
+      "email": "addyosmani@gmail.com"
+    },
+    {
+      "name": "passy",
+      "email": "phartig@rdrei.net"
+    },
+    {
+      "name": "stephenplusplus",
+      "email": "sawchuk@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "faa61d1f250d0ea5e636437fbef812cff37b670f",
+    "tarball": "http://registry.npmjs.org/todomvc-common/-/todomvc-common-1.0.0.tgz"
+  },
+  "jspm": {},
+  "format": "cjs",
+  "ignore": [
+    "node_modules"
+  ],
+  "registry": "npm",
+  "dependencies": {}
+}

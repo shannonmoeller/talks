@@ -1,0 +1,1 @@
+module.exports = require("github:WebReflection/document-register-element@0.3.0/build/document-register-element");
