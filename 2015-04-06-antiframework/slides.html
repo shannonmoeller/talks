@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+	<title>You Might Not Need a Framework</title>
+
+	<style>
+		body {
+		  font-family: 'Helvetica';
+		  letter-spacing:-5px;
+		  background:#000;
+		  background-size:100%;
+		  color:#fff;
+		  margin:0;
+		  padding:0;
+		  font-weight:bold;
+		}
+
+		h1, h2, h3, p {
+		  margin:0;
+		}
+
+		em, a {
+		  font-style:normal;
+		  color:#8dbd0c;
+		}
+
+		a {
+		  background: #34d0e7;
+		  color:#000;
+		  text-decoration:none;
+		}
+
+		img {
+		  width:100%;
+		}
+
+		div {
+		  cursor:pointer;
+		  cursor:hand;
+		  position:absolute;
+		  top:0px;
+		  left:0px;
+		  padding:75px;
+		  line-height:97%;
+		}
+
+		div.center {
+		  text-align:center;
+		}
+
+		div.imageText {
+		  text-shadow:0px 0px 5px rgba(0,0,0,0.2);
+		}
+	</style>
+
+	<script type='text/javascript'>
+		window.onload = function() {
+			var s = document.getElementsByTagName('div'), ti;
+			if (!s) return;
+			var big = { current: 0, forward: fwd, reverse: rev, go: go, length: s.length };
+			window.big = big;
+			function resize() {
+				var w = window.innerWidth, h = window.innerHeight, e = s[big.current];
+				e.style.fontSize = h + 'px';
+				for (var i = h - 2; e.offsetWidth > w || e.offsetHeight > h; i -= 2) {
+					e.style.fontSize = i + 'px';
+				}
+				e.style.marginTop = ((h - e.offsetHeight) / 2) + 'px';
+			}
+			function go(n) {
+				big.current = n;
+				var e = s[n], t = parseInt(e.dataset.timeToNext || 0, 10);
+				document.body.className = e.dataset.bodyclass || '';
+				for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+				e.style.display = 'inline';
+				if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+					document.body.style.backgroundImage = 'url("' + e.firstChild.src + '")';
+					e.firstChild.style.display = 'none';
+					if ('classList' in e) e.classList.add('imageText');
+				} else {
+					document.body.style.backgroundImage = '';
+					document.body.style.backgroundColor = e.style.backgroundColor;
+				}
+				if (ti !== undefined) window.clearInterval(ti);
+				if (t > 0) ti = window.setTimeout(fwd, (t * 1000));
+				resize();
+				if (window.location.hash !== n) window.location.hash = n;
+				document.title = e.textContent || e.innerText;
+			}
+			document.onclick = function() { go(++big.current % (s.length)); };
+			function fwd() { go(Math.min(s.length - 1, ++big.current)); }
+			function rev() { go(Math.max(0, --big.current)); }
+			document.onkeydown = function(e) {
+				if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+				if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+			};
+			document.ontouchstart = function(e) {
+				var x0 = e.changedTouches[0].pageX;
+				document.ontouchend = function(e2) {
+					var x1 = e2.changedTouches[0].pageX;
+					if (x1 - x0 < 0) fwd();
+					if (x1 - x0 > 0) rev();
+				};
+			};
+			function parse_hash() {
+				return Math.max(Math.min(s.length - 1,
+							parseInt(window.location.hash.substring(1), 10)), 0);
+			}
+			if (window.location.hash) big.current = parse_hash() || big.current;
+			window.onhashchange = function() {
+				var c = parse_hash();
+				if (c !== big.current) go(c);
+			};
+			window.onresize = resize;
+			go(big.current);
+		};
+	</script>
+</head>
+<body>
+
+	<div>howdy<br/><br/>i&rsquo;m <a href="http://shannonmoeller.com">shannon</a><br/><br/>a web <a href="http://nerdery.com/nm">nerd</a></div>
+
+	<div>an intro to <em>es6</em> and <em>custom elements</em></div>
+
+	<div>or,<br/><br/>you might <em>not need</em> a <em>framework</em></div>
+
+	<div>i <em><abbr title="love">♥</abbr></em> the <em>future</em></div>
+
+	<div>i&rsquo;m <em>greedy</em> and <em>lazy</em></div>
+
+	<div><pre><code>border-radius</code></pre></div>
+
+	<div>sprites!<br/><em>:)</em></div>
+
+	<div>sprites!<br/><em>:(</em></div>
+
+	<div><blockquote><em>polyfill</em>: v. to fill in an API using JavaScript (or Flash or whatever) if the browser doesn&rsquo;t have it natively <cite><a href="https://twitter.com/rem">@rem</a></cite></blockquote></div>
+
+	<div>css3&nbsp;pie!<br/><em>:)</em></div>
+
+	<div>css3&nbsp;pie!<br/><em>:(</em></div>
+
+	<div>browser wars <em>2.0</em></div>
+
+	<div><blockquote><em>evergreen browser</em>: n. a browser that automatically updates itself outside of the os release cycle <cite><a href="https://twitter.com/wycats">@wycats</a></cite></blockquote></div>
+
+	<div><pre><code>border-radius</code></pre></div>
+
+	<div><em>moar</em></div>
+
+	<div><pre><del>css</del> <em>js</em></pre></div>
+
+	<div><pre><code>@import './sosumi.css';</code></pre></div>
+
+	<div>node.js</div>
+
+	<div><pre><code>require()
+module.exports</code></pre></div>
+
+	<div>require.js</div>
+
+	<div><pre><code>define(fn(){})
+return</code></pre></div>
+
+	<div><em>es6</em></div>
+
+	<div><pre><code>import
+export</code></pre></div>
+
+	<div><pre><code>class
+extends</code></pre></div>
+
+	<div><pre><code>// foo.js
+
+export default {
+  data: null,
+
+  <em>update</em>({ <em>name = ''</em>, <em>items = []</em> } <em>= {}</em>, <em>...args</em>) {
+    this.data = <em>{ name, items, args }</em>);
+  }
+};</code></pre></div>
+
+	<div><pre><code>// bar.js
+
+import Foo from './foo';
+
+Foo.update();
+Foo.update(null, 'bar', 'qux');
+Foo.update({ name: 'Waldo' });
+Foo.update({ items: ['bar', 'qux'] });
+	</code></pre></div>
+
+	<div><a href="https://babeljs.io/repl/">DEMO</a></div>
+
+	<div><pre><code>System.import()</code></pre></div>
+
+	<div><pre><em>cjs?</em> amd?</pre></div>
+
+	<div>there&rsquo;s a <a href="https://github.com/systemjs/systemjs">polyfill</a> for that</div>
+
+	<div><pre><em>npm?</em> bower?</pre></div>
+
+	<div>there&rsquo;s a <a href="https://github.com/jspm/jspm-cli">tool</a> for that</div>
+
+	<div><pre><code>&ltscript&gt;System.import('<em>js/app</em>');&lt;/script&gt;
+
+# self-executing (sfx) bundles
+jspm --bundle-sfx <em>js/app bundle.js</em>
+
+&ltscript src="<em>bundle.js</em>"&gt;&lt;/script&gt;</code></pre></div>
+
+	<div><a href="./my-todos/src">DEMO</a></div>
+
+	<div><em>moar</em></div>
+
+	<div><pre><del>css</del> <del>js</del> <em>html</em></pre></div>
+
+	<div>web <em>components</em></div>
+
+	<div>polymer!<br/><em>:)</em></div>
+
+	<div>polymer!<br/><em>:(</em></div>
+
+	<div><ul><li>HTML Imports</li><li><em>Custom Elements</em></li><li>Shadow DOM</li></ul></div>
+
+	<div><ul><li><strike>HTML Imports</strike></li><li><em>Custom Elements</em></li><li>Shadow DOM</li></ul></div>
+
+	<div><ul><li><del>HTML Imports</del></li><li><em>Custom Elements</em></li><li><del>Shadow DOM</del></li></ul></div>
+
+	<div><pre><code>document.registerElement()</code></pre></div>
+
+	<div><a href="https://github.com/shannonmoeller/talks">DEMO</a></div>
+
+	<div>many of the features you get from a <em>framework</em> have been <em>added to the specs</em> or are now <em>trivial to implement</em></div>
+
+	<div>
+		<em><code>class</code></em>
+		<code>extends</code>
+		<em><code>import</code></em>
+		<code>export</code>
+		<em><code>()=&gt;{}</code></em>
+		<code>...args</code>
+		<em><code>let</code></em>
+		<code>const</code>
+		<em><code>html`hello${foo}world`</code></em>
+		...
+	</div>
+
+	<div>
+		<code>System.import()</code>
+		<em><code>document.registerElement()</code></em>
+		<code>el.querySelector()</code>
+		<em><code>window.fetch()</code></em>
+		...
+	</div>
+
+	<div>that said,<br/><br/>you might <em>still need</em> a <em>framework</em></div>
+
+	<div>stay <em>curious</em> my friends</div>
+
+	<div>
+		thanks<br/><br/>
+		<a href="http://shannonmoeller.com">shannonmoeller.com</a><br/><br/>
+		<a href="http://github.com/shannonmoeller">github.com/shannonmoeller</a><br/></br/>
+		<a href="http://twitter.com/shannonmoeller">@shannonmoeller</a>
+	</div>
+
+</body>
+</html>

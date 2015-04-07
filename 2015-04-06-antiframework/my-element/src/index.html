@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+
+	<meta charset="utf-8" />
+	<title>You Might Not Need a Framework</title>
+	<link rel="stylesheet" href="assets/css/app.css" />
+
+</head>
+<body>
+
+	<my-tabs>
+		<my-tab onclick="this.parentNode.onTabClicked(this)">Foo</my-tab>
+		<my-tab-panel>
+			<p>Foo content.</p>
+		</my-tab-panel>
+
+		<my-tab>Bar</my-tab>
+		<my-tab-panel>
+			<p>Bar content.</p>
+		</my-tab-panel>
+
+		<my-tab>Baz</my-tab>
+		<my-tab-panel>
+			<p>Baz content.</p>
+		</my-tab-panel>
+	</my-tabs>
+
+	<script src="assets/vendor/system.js"></script>
+	<script src="assets/js/config.js"></script>
+	<script>System.import('js/app');</script>
+
+</body>
+</html>
