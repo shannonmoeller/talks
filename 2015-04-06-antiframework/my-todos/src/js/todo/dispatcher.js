@@ -1,4 +1,4 @@
-import Dispatcher from '../lib/Dispatcher';
+import Dispatcher from '../lib/dispatcher';
 
 /**
  * @class TodoDispatcher
