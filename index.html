@@ -8,22 +8,84 @@
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Slab:300" />
 
 	<style>
+		*, *:before, *:after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
 		html {
 			background: hsl(0, 0%, 20%);
 			color: hsl(0, 0%, 90%);
 			font-family: 'Roboto Slab', sans-serif;
 			font-size: 16px;
 			font-weight: 300;
-			line-height: 1.6;
+			line-height: 1.2;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			-webkit-text-size-adjust: 100%;
+			-ms-text-size-adjust: 100%;
 		}
 		body {
 			margin: 30px;
 		}
 		a {
-			color: hsl(96, 20%, 50%)
+			color: hsl(96, 20%, 50%);
+			text-decoration: none;
+		}
+		a:focus,
+		a:hover {
+			text-decoration: underline;
 		}
 		h1 {
 			font-weight: normal;
+		}
+		.block {
+			color: inherit;
+			display: block;
+			text-decoration: none;
+		}
+		.bricks {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin: -0.5em;
+		}
+		.brick {
+			background: hsl(0, 0%, 100%);
+			border-radius: 0.25em;
+			box-shadow: 0 2px 10px hsla(0, 0%, 0%, 0.1);
+			flex: 1 1 300px;
+			margin: 0.5em;
+			overflow: hidden;
+		}
+		.brick-hd {
+			background: hsl(96, 21%, 54%);
+			color: hsl(0, 0%, 100%);
+			padding: 2em 2em 1em;
+		}
+		.brick-bd {
+			color: hsl(0, 0%, 20%);
+			padding: 1em 2em;
+		}
+		.vList {
+			list-style: none;
+			overflow: hidden;
+		}
+		.vList > * {
+			float: left;
+		}
+		.vList > * + * {
+			border-left: 1px solid hsla(0, 0%, 0%, 0.1);
+			margin-left: 0.5em;
+			padding-left: 0.5em;
+		}
+		.vrLg > * + * {
+			margin-top: 1em;
+		}
+		.vrSm > * + * {
+			margin-top: 1em;
 		}
 	</style>
 
@@ -40,15 +102,28 @@
 </head>
 <body>
 
-	<h1>Shannon Moeller&rsquo;s Talks</h1>
+	<div class="vrLg">
+		<h1>Shannon Moeller&rsquo;s Talks</h1>
 
-	<h2 id="you-might-not-need-a-framework">2015-04-06: You Might Not Need a Framework</h2>
+		<div class="bricks">
+			<article class="brick">
+				<a class="block" href="http://shannonmoeller.github.io/talks/2015-04-06-antiframework/slides.html">
+					<header class="brick-hd">
+						<h2 id="you-might-not-need-a-framework">You Might Not Need a Framework</h2>
+						<p>April, 6 2015</p>
+					</header>
+				</a>
 
-	<ul>
-		<li><a href="http://shannonmoeller.github.io/talks/2015-04-06-antiframework/slides.html">Slides</a></li>
-		<li><a href="https://github.com/shannonmoeller/talks/blob/master/2015-04-06-antiframework/notes.md">Notes</a></li>
-		<li><a href="https://github.com/shannonmoeller/talks/tree/master/2015-04-06-antiframework">Code on GitHub</a></li>
-	</ul>
+				<div class="brick-bd">
+					<ul class="vList">
+						<li><a href="http://shannonmoeller.github.io/talks/2015-04-06-antiframework/slides.html">Slides</a></li>
+						<li><a href="https://github.com/shannonmoeller/talks/blob/master/2015-04-06-antiframework/notes.md">Notes</a></li>
+						<li><a href="https://github.com/shannonmoeller/talks/tree/master/2015-04-06-antiframework">Code on GitHub</a></li>
+					</ul>
+				</div>
+			</article>
+		</div>
+	</div>
 
 </body>
 </html>
