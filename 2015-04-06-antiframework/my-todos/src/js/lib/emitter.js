@@ -70,6 +70,7 @@ export default class Emitter {
 	 * @return {Function}
 	 */
 	emitter(event) {
-		return (...args) => this.emit(event, ...args);
+		// return (...args) => this.emit(event, ...args);
+		return this.emit.bind(this, event);
 	}
 }
